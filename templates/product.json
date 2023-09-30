@@ -251,6 +251,37 @@
         "section_padding_bottom": 20,
         "section_padding_top": 10
       }
+    },
+    "293a16f5-c73c-4f92-8bde-88675629fff8": {
+      "type": "custom-media-with-text",
+      "blocks": {
+        "1317e99c-ff7d-4435-9969-a8718d59e2e5": {
+          "type": "heading",
+          "settings": {
+            "block_title": "Please enter your text(optional)",
+            "heading_type": "h2",
+            "text_type": "<p>Here is paragraph<\/p>",
+            "text_type_color": "",
+            "text_type_custom_font": false,
+            "text_type_default_font": "mono",
+            "text_type_custom_font_name": ""
+          }
+        },
+        "612e44e7-2eb3-436d-b29e-658d5bd9c485": {
+          "type": "media",
+          "settings": {
+            "video_picker_setting": "https:\/\/www.youtube.com\/watch?v=83M45mRTt7c"
+          }
+        }
+      },
+      "block_order": [
+        "1317e99c-ff7d-4435-9969-a8718d59e2e5",
+        "612e44e7-2eb3-436d-b29e-658d5bd9c485"
+      ],
+      "settings": {
+        "section_padding_bottom": 0,
+        "section_padding_top": 0
+      }
     }
   },
   "order": [
@@ -258,6 +289,7 @@
     "image-with-text",
     "multicolumn",
     "related-products",
-    "7e757946-3bef-4a37-85c7-46693a09e1d1"
+    "7e757946-3bef-4a37-85c7-46693a09e1d1",
+    "293a16f5-c73c-4f92-8bde-88675629fff8"
   ]
 }
