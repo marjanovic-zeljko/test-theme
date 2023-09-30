@@ -1,4 +1,4 @@
-{{ 'custom-products-with-text.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
 {%- assign section-padding-top = section.settings.section_padding_top -%}
 {%- assign section-padding-bottom = section.settings.section_padding_bottom -%}
 
@@ -42,28 +42,32 @@
             endfor
           -%}
 
+        {% if has1product %}
+          <div class="related-products" id="related-products-{{ block.id }}">
+            {% for prod in relatedProducts %}
+              {% if prod.available == true %}
+                <a
+                  href="{{ prod.url }}"
+                  class="related-product"
+                  aria-label="{{ prod.title }}"
+                  title="{{ prod.title }}">
+                  <img
+                    class="related-product__image"
+                    src="{{ prod.images[0] | img_url: '200x' }}"
+                    alt="{{ prod.title }}">
+                  <p class="product-title">{{ prod.title }}</p>
+                  <p class="price-text">{{ prod.price | money_with_currency }}</p>
+                  {%- render 'buy-buttons' 
+                    , block: block,
+                    product: prod,
+                    product_form_id: product_form_id,
+                    section_id: section.id -%}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
 
-        <div class="related-products" id="related-products-{{ block.id }}">
-          {% for prod in relatedProducts %}
-            {% if prod.available == true %}
-
-
-              <a
-                href="{{ prod.url }}"
-                class="related-product"
-                aria-label="{{prod.title}}"
-                title="{{ prod.title }}">
-                <img
-                  class="related-product__image"
-                  src="{{ prod.images[0] | img_url: '300x' }}"
-                  alt="{{ prod.title }}">
-                <p>{{ prod.title }}</p>
-                <p>{{ prod.price | money_with_currency }}</p>
-              </a>
-            {% endif %}
-          {% endfor %}
-
-        </div>
 
       {% endif %}
     {% endif %}
@@ -103,7 +107,44 @@
     ;
   }
 
+  a {
+    text-decoration: none;
+  }
 
+  .related-product {
+    display: flex;
+    max-width: 300px;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+
+  .related-products {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .related-products .product-form__submit.button.button--full-width.button--primary {
+    color: black;
+    padding: 20px;
+    background-color: aquamarine;
+    border-radius: 20px;
+  }
+
+  .price-text {
+    font-size: 20px;
+    color: orange;
+    font-weight: 600;
+  }
+
+  .product-title {
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    line-height: normal;
+  }
   #related-products-{{ block.id }}{
     text-align: left;
     display: flex;
