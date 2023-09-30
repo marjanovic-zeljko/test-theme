@@ -56,7 +56,7 @@
             "block_title": "Here is title",
             "heading_type": "h1",
             "text_type": "<p>Here is paragraph<\/p>",
-            "text_type_color": "",
+            "text_type_color": "#334fb4",
             "text_type_custom_font": false,
             "text_type_default_font": "mono",
             "text_type_custom_font_name": ""
