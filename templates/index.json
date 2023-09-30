@@ -85,43 +85,10 @@
         "section_padding_bottom": 0,
         "section_padding_top": 0
       }
-    },
-    "f8cff105-5e1d-47a0-90fa-acb5b2a1201f": {
-      "type": "custom-products-with-text",
-      "blocks": {
-        "590cf269-f5ca-47f4-a6e3-fc7c70e424f4": {
-          "type": "heading",
-          "settings": {
-            "block_title": "Here is products",
-            "heading_type": "h1",
-            "text_type": "<p>You can change the number of products<\/p>",
-            "text_type_color": "",
-            "text_type_custom_font": false,
-            "text_type_default_font": "mono",
-            "text_type_custom_font_name": ""
-          }
-        },
-        "b33b3fa8-5dfd-4fad-b380-a15d280f5a3d": {
-          "type": "product",
-          "settings": {
-            "products_to_show": 4,
-            "heading_font_size": 18
-          }
-        }
-      },
-      "block_order": [
-        "590cf269-f5ca-47f4-a6e3-fc7c70e424f4",
-        "b33b3fa8-5dfd-4fad-b380-a15d280f5a3d"
-      ],
-      "settings": {
-        "section_padding_bottom": 0,
-        "section_padding_top": 0
-      }
     }
   },
   "order": [
     "image_banner",
-    "71eff1f2-3a2b-4375-8312-185cf806ab12",
-    "f8cff105-5e1d-47a0-90fa-acb5b2a1201f"
+    "71eff1f2-3a2b-4375-8312-185cf806ab12"
   ]
 }
