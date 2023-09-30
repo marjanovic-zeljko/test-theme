@@ -1,4 +1,3 @@
-
 {% assign sectionID = 'shopify-section-' | append: section.id -%}
 {%- assign section-padding-top = section.settings.section_padding_top -%}
 {%- assign section-padding-bottom = section.settings.section_padding_bottom -%}
@@ -15,7 +14,9 @@
       {%- assign text-font-default = block.settings.text_type_default_font -%}
 
       {% if block-title != 'blank' %}
-        <{{ heading-type }}>{{ block-title }}</{{ heading-type }}>
+        <{{ heading-type }}>
+          {{ block-title }}
+        </{{ heading-type }}>
       {% endif %}
 
       {% if text-type != blank %}
@@ -26,62 +27,43 @@
     {% endfor %}
 
 
+    <div class="media-container">
+      {% for block in section.blocks %}
+        {% assign image-picker = block.settings.image_picker_setting %}
+        {% assign video-picker = block.settings.video_picker_setting %}
 
-    {% for block in section.blocks %}
-      {% if block.type == 'product' and block.settings.heading_font_size > 1 %}
-        {% if product.metafields.product_info.related_products %}
-          {% assign relatedProducts = product.metafields.product_info.related_products.value %}
-          {%- assign has1product = false -%}
-
-          {% for prod in relatedProducts %}
-            {% if prod.available == true %}
-              {%- assign has1product = true -%}
-              {% break %}
-            {% endif %}
-          {% endfor %}
-
-          {% if has1product %}
-            <div class="related-products" id="related-products-{{ block.id }}">
-              {%- assign products_to_show = block.settings.products_to_show | default: 4 -%}
-              {% assign displayed_products = 0 %}
-
-              {% for prod in relatedProducts %}
-                {% if prod.available == true and displayed_products < products_to_show %}
-                  <a
-                    href="{{ prod.url }}"
-                    class="related-product"
-                    aria-label="{{ prod.title }}"
-                    title="{{ prod.title }}">
-                    <img
-                      class="related-product__image"
-                      src="{{ prod.images[0] | img_url: '200x' }}"
-                      alt="{{ prod.title }}">
-                    <p class="product-title">{{ prod.title }}</p>
-                    <p class="price-text" style="font-size: {{ block.settings.heading_font_size }}px;">{{ prod.price | money_with_currency }}</p>
-                    {%- render 'buy-buttons' 
-                      , block: block,
-                      product: prod,
-                      product_form_id: product_form_id,
-                      section_id: section.id -%}
-                  </a>
-                  {% assign displayed_products = displayed_products | plus: 1 %}
-                {% else %}
-                  {% break %}
-                {% endif %}
-              {% endfor %}
-            </div>
-          {% endif %}
+        {% if image-picker != blank %}
+          <img src="{{ image-picker | img_url: '600x600' }}" alt="Selected Image">
         {% endif %}
-      {% endif %}
-    {% endfor %}
 
 
+        {%- if video-picker.type == "youtube" -%}
+          <iframe
+            id="videoProperties"
+            width="500px"
+            height="300px"
+            src="//www.youtube.com/embed/{{ video-picker.id }}?rel=0&showinfo=0&vq=720"
+            frameborder="0"
+            allowfullscreen></iframe>
+        {%- endif -%}
+        {%- if video-picker.type == "vimeo" -%}
+          <iframe
+            id="videoProperties"
+            width="500px"
+            height="300px"
+            src="//player.vimeo.com/video/{{ video-picker.id }}?color={{ settings.color_button | remove: "#" }}&byline=0&portrait=0&badge=0"
+            frameborder="0"
+            allowfullscreen></iframe>
+        {%- endif -%}
 
+
+      {% endfor %}
+    </div>
   {% endif %}
-</div>
 
+</div>
 <style>
-    #{{sectionID}} .l-wrapper {
+ #{{sectionID}} .l-wrapper {
     align-items: center;
     display: flex;
     justify-self: center;
@@ -92,7 +74,7 @@
     {{ text-font-default | font_face }}
   {% endif %}
 
-  #{{sectionID}}  .test-text p {
+ #{{sectionID}} .test-text p {
     {% if text-custom-font %}
       {% if text-font-name != blank %}
         font-family: {{ text-font-name}}
@@ -107,76 +89,20 @@
     ;
   }
 
-  #{{sectionID}}  a {
+ #{{sectionID}} a {
     text-decoration: none;
   }
-
-  #{{sectionID}} .related-product {
+ #{{sectionID}} .media-container {
     display: flex;
-    max-width: 300px;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-
-  }
-
-  #{{sectionID}} .related-products {
-    display: flex;
-    align-items: center;
     justify-content: center;
-    width: 100%;
-  }
-
-  #{{sectionID}} .related-products .product-form__submit.button.button--full-width.button--primary {
-    color: black;
-    padding: 20px;
-    background-color: aquamarine;
-    border-radius: 20px;
-  }
-
-  #{{sectionID}} .price-text {
-    color: orange;
-    font-weight: 600;
-  }
-
-  #{{sectionID}} .product-title {
-    text-decoration: none;
-    color: black;
-    font-size: 22px;
-    line-height: normal;
-  }
-  #{{sectionID}} #related-products-{{ block.id }}{
-    text-align: left;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  #{{sectionID}} #related-products-{{ block.id }}.related-product {
-    display: inline-block;
-    width: calc(25% - 0.4rem);
-    margin: 0 0.4rem 0.8rem 0;
-    position: relative;
-    border: 1px solid transparent;
-    text-align: center;
-  }
-  #{{sectionID}} #related-products-{{ block.id }}.related-product:last-child {
-    margin-right: 0;
-  }
-  #{{sectionID}} #related-products-{{ block.id }}.related-product__image {
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  #{{sectionID}} #related-products-{{ block.id }}.related-product:hover {
-    border-color: {{ block.settings.hover_border_color }}
-    ;
   }
 </style>
 
 {% schema %}
   {
-    "name": "Custom Product With Text",
+    "name": "Custom Media With Text",
     "tag": "section",
+    "class": "spaced-section",
     "settings": [
       {
         "type": "header",
@@ -278,29 +204,30 @@
 
         ]
       }, {
-        "type": "product",
-        "name": "⚡️ Related Product",
+        "type": "media",
+        "name": "Media",
         "settings": [
           {
-            "type": "range",
-            "id": "products_to_show",
-            "min": 2,
-            "max": 25,
-            "step": 1,
-            "default": 4,
-            "label": "Product"
+            "type": "image_picker",
+            "id": "image_picker_setting",
+            "label": "Image Picker Setting",
+            "info": "Choose an image for this section."
           }, {
-            "type": "number",
-            "id": "heading_font_size",
-            "label": "Price Font Size (px)",
-            "default": 18
+            "type": "video_url",
+            "id": "video_picker_setting",
+            "label": "Video Picker Setting",
+            "accept": [
+              "youtube", "vimeo"
+            ],
+            "info": "Choose a video for this section."
           }
+
         ]
       }
     ],
     "presets": [
       {
-        "name": "Custom Product With Text"
+        "name": "Custom Media With Text"
       }
     ]
   }
