@@ -245,6 +245,41 @@
         "section_padding_bottom": 0,
         "section_padding_top": 0
       }
+    },
+    "a3fa2c41-093a-4a38-bc58-a3199310dc9d": {
+      "type": "custom-products-with-text",
+      "blocks": {
+        "c18e1f66-4e40-4558-bdc2-fc76be4f19cd": {
+          "type": "heading",
+          "settings": {
+            "block_title": "Please enter your text(optional)",
+            "heading_type": "h2",
+            "text_type": "",
+            "text_type_color": "",
+            "text_type_custom_font": false,
+            "text_type_default_font": "mono",
+            "text_type_custom_font_name": ""
+          }
+        },
+        "e7518229-bdd0-4abd-9ecf-3088ce1deb52": {
+          "type": "product",
+          "settings": {
+            "products_to_show": 4,
+            "heading": "Related Products",
+            "heading_font_size": 18,
+            "heading_color": "#121212",
+            "hover_border_color": "#121212"
+          }
+        }
+      },
+      "block_order": [
+        "c18e1f66-4e40-4558-bdc2-fc76be4f19cd",
+        "e7518229-bdd0-4abd-9ecf-3088ce1deb52"
+      ],
+      "settings": {
+        "section_padding_bottom": 0,
+        "section_padding_top": 0
+      }
     }
   },
   "order": [
@@ -254,6 +289,7 @@
     "collage",
     "video",
     "multicolumn",
-    "b9fcf7d8-8049-4104-8816-a97b9db59b5f"
+    "b9fcf7d8-8049-4104-8816-a97b9db59b5f",
+    "a3fa2c41-093a-4a38-bc58-a3199310dc9d"
   ]
 }
