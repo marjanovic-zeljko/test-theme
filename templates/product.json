@@ -228,7 +228,7 @@
           "settings": {
             "block_title": "Please enter your text(optional)",
             "heading_type": "h2",
-            "text_type": "",
+            "text_type": "<p>Here is paragraph<\/p>",
             "text_type_color": "",
             "text_type_custom_font": false,
             "text_type_default_font": "mono",
