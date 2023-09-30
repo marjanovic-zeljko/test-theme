@@ -99,136 +99,145 @@
 </style>
 
 {% schema %}
-  {
-    "name": "Custom Media With Text",
-    "tag": "section",
-    "class": "spaced-section",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Header"
-      }, {
-        "type": "range",
-        "id": "section_padding_bottom",
-        "min": 0,
-        "max": 100,
-        "step": 10,
-        "unit": "px",
-        "label": "Section Container Bottom Padding",
-        "default": 0
-      }, {
-        "type": "range",
-        "id": "section_padding_top",
-        "min": 0,
-        "max": 100,
-        "step": 10,
-        "unit": "px",
-        "label": "Section Container Top Padding",
-        "default": 0
-      }
-    ],
-    "blocks": [
-      {
-        "type": "heading",
-        "name": "Headings",
-        "settings": [
-          {
-            "type": "header",
-            "content": "HEADLINE STYLING"
-          },
-          {
-            "type": "text",
-            "id": "block_title",
-            "label": "Headline",
-            "default": "Please enter your text(optional)"
-          },
-          {
-            "type": "select",
-            "id": "heading_type",
-            "options": [
-              {
-                "value": "h1",
-                "label": "H1"
-              },
-              {
-                "value": "h2",
-                "label": "H2"
-              },
-              {
-                "value": "h3",
-                "label": "H3"
-              },
-              {
-                "value": "h4",
-                "label": "H4"
-              }, {
-                "value": "h5",
-                "label": "H5"
-              }, {
-                "value": "h6",
-                "label": "H6"
-              }
-
-            ],
-            "default": "h2",
-            "label": "Heading Tags",
-            "info": "Use Heading Tags for better SEO."
-          },
-          {
-            "type": "header",
-            "content": "PARAGRAPH STYLING - [2]"
-          }, {
-            "type": "richtext",
-            "id": "text_type",
-            "label": "Paragraph Text - [2]"
-          }, {
-            "type": "color",
-            "id": "text_type_color",
-            "label": "Paragraph Text Color - [2]"
-          }, {
-            "type": "checkbox",
-            "id": "text_type_custom_font",
-            "label": "Use Custom Font - [2]",
-            "default": false
-          }, {
-            "type": "font_picker",
-            "id": "text_type_default_font",
-            "label": "Paragraph Text Font - [2]",
-            "default": "mono"
-          }, {
-            "type": "text",
-            "id": "text_type_custom_font_name",
-            "label": "Custom Font Family Name - [2]",
-            "info": "Add your custom font. Example: ‘Helvetica’, ‘Sans-Serif’."
-          }
-
-        ]
-      }, {
-        "type": "media",
-        "name": "Media",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image_picker_setting",
-            "label": "Image Picker Setting",
-            "info": "Choose an image for this section."
-          }, {
-            "type": "video_url",
-            "id": "video_picker_setting",
-            "label": "Video Picker Setting",
-            "accept": [
-              "youtube", "vimeo"
-            ],
-            "info": "Choose a video for this section."
-          }
-
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Custom Media With Text"
-      }
-    ]
-  }
+{
+  "name": "Custom Media With Text",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Container Bottom Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Container Top Padding",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Headings",
+      "settings": [
+        {
+          "type": "header",
+          "content": "HEADLINE STYLING"
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Headline",
+          "default": "Please enter your text(optional)"
+        },
+        {
+          "type": "select",
+          "id": "heading_type",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ],
+          "default": "h2",
+          "label": "Heading Tags",
+          "info": "Use Heading Tags for better SEO."
+        },
+        {
+          "type": "header",
+          "content": "PARAGRAPH STYLING - [2]"
+        },
+        {
+          "type": "richtext",
+          "id": "text_type",
+          "label": "Paragraph Text - [2]"
+        },
+        {
+          "type": "color",
+          "id": "text_type_color",
+          "label": "Paragraph Text Color - [2]"
+        },
+        {
+          "type": "checkbox",
+          "id": "text_type_custom_font",
+          "label": "Use Custom Font - [2]",
+          "default": false
+        },
+        {
+          "type": "font_picker",
+          "id": "text_type_default_font",
+          "label": "Paragraph Text Font - [2]",
+          "default": "mono"
+        },
+        {
+          "type": "text",
+          "id": "text_type_custom_font_name",
+          "label": "Custom Font Family Name - [2]",
+          "info": "Add your custom font. Example: ‘Helvetica’, ‘Sans-Serif’."
+        }
+      ]
+    },
+    {
+      "type": "media",
+      "name": "Media",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_picker_setting",
+          "label": "Image Picker Setting",
+          "info": "Choose an image for this section."
+        },
+        {
+          "type": "video_url",
+          "id": "video_picker_setting",
+          "label": "Video Picker Setting",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ],
+          "info": "Choose a video for this section."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Media With Text"
+    }
+  ]
+}
 {% endschema %}
